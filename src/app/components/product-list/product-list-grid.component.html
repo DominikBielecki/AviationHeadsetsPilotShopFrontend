@@ -34,6 +34,40 @@
         </div>
 
       </div>
+      <!-- begin footer -->
+        <div class="footer-pagination">
+          <div class="row">
+            <div class="col-md-6"></div>
+
+            <div class="col-md-d">
+              <div class="row">
+                <div class="col-md-9" style="padding-left: 30%">
+                    <ngb-pagination [(page)]="thePageNumber"
+                                    [pageSize]="thePageSize"
+                                    [collectionSize]="theTotalElements"
+                                    [maxSize]="5"
+                                    [boundaryLinks]="true"
+                                    (pageChange)="listProducts()">
+                  </ngb-pagination>
+                </div>
+
+                <div class="col-md-10" style="text-align: center;">
+                  <span clas="mr-2" style="color:#625D67">Page Size</span>
+                  <select (change)="updatePageSize($event.target.value)">
+                    <option style="color:#625D67" selected="true">5</option>
+                    <option style="color:#625D67">10</option>
+                    <option style="color:#625D67">15</option>
+                    <option style="color:#625D67">20</option>
+                  </select>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- end footer -->
+
     </div>
   </div>
 </div>
