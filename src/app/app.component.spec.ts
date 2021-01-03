@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'AviationHeadsetsPilothsopFrontend'`, () => {
+  it(`should have as title 'AviationHeadsetsPilotShopFrontend'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('AviationHeadsetsPilothsopFrontend');
+    expect(app.title).toEqual('AviationHeadsetsPilotShopFrontend');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('AviationHeadsetsPilothsopFrontend app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('AviationHeadsetsPilotShopFrontend app is running!');
   });
 });
