@@ -4,6 +4,7 @@ import {AviationShopFormService} from '../../services/aviation-shop-form.service
 import {Country} from '../../common/country';
 import {State} from '../../common/state';
 import {AviationPilotShopValidators} from '../../validators/aviation-pilot-shop-validators';
+import {CartService} from '../../services/cart.service';
 
 @Component({
   selector: 'app-checkout',
@@ -25,9 +26,12 @@ export class CheckoutComponent implements OnInit {
   billingAddressStates: State[] = [];
 
   constructor(private formBuilder: FormBuilder,
-              private aviationShopFormService: AviationShopFormService) { }
+              private aviationShopFormService: AviationShopFormService,
+              private cartService: CartService) { }
 
   ngOnInit(): void {
+
+    this.reviewCartDetails();
 
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
@@ -103,6 +107,19 @@ export class CheckoutComponent implements OnInit {
     console.log("The email address is " + this.checkoutFormGroup.get('customer').value.email);
     console.log("The shipping address country is " + this.checkoutFormGroup.get('shippingAddress').value.country.name);
     console.log("The shipping address state is " + this.checkoutFormGroup.get('shippingAddress').value.state.name);
+  }
+
+  reviewCartDetails() {
+
+    //subscribe to cartService.totalQuantity
+    this.cartService.totalQuantity.subscribe(
+      totalQuantity => this.totalQuantity = totalQuantity
+   );
+
+    //subscribe to cartService.totalPrice
+    this.cartService.totalPrice.subscribe(
+      totalPrice => this.totalPrice = totalPrice
+    );
   }
 
   get firstName() { return this.checkoutFormGroup.get('customer.firstName'); }
